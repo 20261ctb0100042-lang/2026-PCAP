@@ -1,0 +1,35 @@
+/*
+* Disciplina : PCAP-2026
+* Problema   : Beecrowd 1180 - Menor e Posição
+* Autor      : Pedro Moura
+* LIAC       : lê N e depois N inteiros num vetor. imprime o menor valor e a posição em que ele está (a partir do zero).
+*
+*/
+#include <stdio.h>
+
+int posicao_do_menor(int v[], int n) {
+    int i, pos = 0;
+
+    for (i = 1; i < n; i++) {
+        if (v[i] < v[pos]) {
+            pos = i;
+        }
+    }
+    return pos;
+}
+
+int main() {
+    int v[1000], n, i, pos;
+
+    scanf("%d", &n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &v[i]);
+    }
+
+    pos = posicao_do_menor(v, n);
+
+    printf("Menor valor: %d\n", v[pos]);
+    printf("Posicao: %d\n", pos);
+
+    return 0;
+}
