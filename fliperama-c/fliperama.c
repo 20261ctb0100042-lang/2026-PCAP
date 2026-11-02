@@ -14,7 +14,7 @@
 #define DONO "Pedro Felipe"
 #define CAPACIDADE 50
 #define TAM_APELIDO 20
-#define ARQUIVO "jogadores.cvs"
+#define ARQUIVO "jogadores.csv"
 
 void linha() {
     printf("===================================\n");
@@ -58,9 +58,14 @@ int buscar(char apelidos[][TAM_APELIDO], int qtd, char procurado[]) {
 }
 
 int cadastrar(char apelidos[][TAM_APELIDO], int partidas[], int qtd) {
+
     char novo[TAM_APELIDO];
 
     titulo("NOVO JOGADOR");
+    if (qtd >= CAPACIDADE) {
+        printf("Capacidade máxima atingida.\n");
+        return qtd;
+    }
     ler_texto("Apelido (sem espacos)", novo);
 
     if (buscar(apelidos, qtd, novo) != -1) {
@@ -73,6 +78,7 @@ int cadastrar(char apelidos[][TAM_APELIDO], int partidas[], int qtd) {
     printf("Jogador %s cadastrado.\n", novo);
     return qtd + 1;
 }
+
 
 void listar(char apelidos[][TAM_APELIDO], int partidas[], int qtd) {
     int i;
